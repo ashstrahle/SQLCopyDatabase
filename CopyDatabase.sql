@@ -1,7 +1,7 @@
 USE [master]
 GO
 
-/****** Object:  StoredProcedure [dbo].[CopyDatabase]    Script Date: 5/5/2020 1:55:24 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_CopyDatabase] ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,15 +10,14 @@ GO
 
 -- ==========================================================================================
 --
---	This T-SQL script restores the most recent backup of @src_database over @tgt_database.
---	Be sure to set the source and target database variables accordingly. It assumes 
---	target database already exists. It attempts to kill all sessions connected to target 
---	database prior to committing the restore.
+--	This procedure restores the most recent backup of @src_database over @tgt_database.
+--	It assumes the target database already exists. It attempts to kill all sessions 
+--	connected to target database prior to committing the restore.
 --
 --  Author: Ashley Strahle - https://github.com/ashstrahle
 --
 -- ==========================================================================================
-CREATE PROCEDURE [dbo].[CopyDatabase](@src_database NVARCHAR(MAX), @tgt_database NVARCHAR(MAX))
+CREATE PROCEDURE [dbo].[sp_CopyDatabase](@src_database NVARCHAR(MAX), @tgt_database NVARCHAR(MAX))
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
